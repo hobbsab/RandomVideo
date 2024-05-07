@@ -25,8 +25,15 @@ const App = () => {
   return (
     <div className="maindiv">
       <h1>Random Video Generator</h1>
-      <input name="searchbar" />
-      <button className="searchbtn"><BsSearch /></button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Enter search query"
+        />
+        <button type="submit"><BsSearch /></button>
+      </form>
       <RandomVideo />
       {/* <RandomVideoButton onClick={generateRandomVideo} /> */}
       {/* {videoId && <VideoPlayer videoId={videoId} />} */}
