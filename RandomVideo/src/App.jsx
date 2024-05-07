@@ -1,20 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import VideoPlayer from './VideoPlayer';
+import ghIcon from './assets/github-mark-white.png';
+import RandomVideo from './VideoPlayer';
+// import db from './db';
+import { AiFillLike, AiFillDislike } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [videoId, setVideoId] = useState('');
+
+  const generateRandomVideo = async () => {
+    const id = await fetchRandomVideo();
+    setVideoId(id);
+  };
+
+  const handleLike = () => {
+    db.likes.add({ id: videoId });
+  };
+
+  const handleDislike = () => {
+    db.dislikes.add({ id: videoId });
+  };
 
   return (
-    <>
-      <div>
-        <h1 className='header'>Random Video Generator</h1>
-      </div>
-      <h1>Vite + React</h1>
+    <div className="maindiv">
+      <h1>Random Video Generator</h1>
+      <input name="searchbar" />
+      <button className="searchbtn"><BsSearch /></button>
+      <RandomVideo />
+      {/* <RandomVideoButton onClick={generateRandomVideo} /> */}
+      {/* {videoId && <VideoPlayer videoId={videoId} />} */}
+      {/* <LikeButton onClick={handleLike} />
+      <DislikeButton onClick={handleDislike} /> */}
+      <button className="likebtn" onClick={handleLike}>Like <AiFillLike /></button>
+      <button className="dislikebtn" onClick={handleDislike}>Dislike <AiFillDislike /></button>
+      <footer>
+      <a href="https://github.com/hobbsab">
+        <img className= "footerImg" src={ghIcon} />
+      </a>
+      </footer>
+    </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;
