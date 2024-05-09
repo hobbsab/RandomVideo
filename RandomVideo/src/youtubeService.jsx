@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 const API_KEY = 'AIzaSyC3EuAlOcgsSuE1Y12GbjNks_X4XzMCMoo';
@@ -25,21 +24,21 @@ const App = () => {
 
       // Select a random video from the search results
       const randomIndex = Math.floor(Math.random() * response.data.items.length);
-      const randomVideoId = response.data.items[randomIndex].id.videoId;
-      setRandomVideo(`https://www.youtube.com/watch?v=${randomVideoId}`);
-    } catch (error) {
-      console.error('Error fetching and selecting random video:', error);
-    }
-  };
+    const randomVideoId = response.data.items[randomIndex].id.videoId;
+    setRandomVideo(`https://www.youtube.com/watch?v=${randomVideoId}`);
+  } catch (error) {
+    console.error('Error fetching and selecting random video:', error);
+  }
+};
+}
 
-
-export const fetchRandomVideo = async () => {
+export const fetchRandomVideo = async (searchTerm) => {
   try {
     const response = await axios.get(API_URL, {
       params: {
         key: API_KEY,
         part: 'snippet',
-        q: 'food',
+        q: searchTerm,
         type: 'video',
         videoEmbeddable: true,
         maxResults: 1,
@@ -48,7 +47,7 @@ export const fetchRandomVideo = async () => {
     });
 
     const randomVideo = response.data.items[0];
-    console.log (response)
+    console.log(response)
     return randomVideo;
   } catch (error) {
     console.error('Error fetching random video:', error);

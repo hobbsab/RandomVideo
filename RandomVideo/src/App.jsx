@@ -5,10 +5,12 @@ import RandomVideo from './VideoPlayer';
 // import db from './db';
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
+import { fetchRandomVideo } from './youtubeService';
 
 const App = () => {
   const [videoId, setVideoId] = useState('');
-
+  const [video, setVideo] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const generateRandomVideo = async () => {
     const id = await fetchRandomVideo();
     setVideoId(id);
@@ -25,7 +27,12 @@ const App = () => {
   return (
     <div className="maindiv">
       <h1>Random Video Generator</h1>
-      <form onSubmit={handleSubmit}>
+      <p>Generate a random video based on your search query.</p>
+      <form onSubmit= {async (e) => {
+        e.preventDefault();
+        const randomVideo = await fetchRandomVideo (searchQuery)
+        console.log(randomVideo)
+        setVideo(randomVideo)}}>
         <input
           type="text"
           value={searchQuery}
@@ -34,11 +41,7 @@ const App = () => {
         />
         <button type="submit"><BsSearch /></button>
       </form>
-      <RandomVideo />
-      {/* <RandomVideoButton onClick={generateRandomVideo} /> */}
-      {/* {videoId && <VideoPlayer videoId={videoId} />} */}
-      {/* <LikeButton onClick={handleLike} />
-      <DislikeButton onClick={handleDislike} /> */}
+      <RandomVideo video= {video}/>
       <button className="likebtn" onClick={handleLike}>Like <AiFillLike /></button>
       <button className="dislikebtn" onClick={handleDislike}>Dislike <AiFillDislike /></button>
       <footer>

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { fetchRandomVideo } from './youtubeService';
 
-const RandomVideo = () => {
-  const [video, setVideo] = useState(null);
-
+const RandomVideo = (props) => {
+  const [video, setVideo] = useState(props.video);
+console.log(props)
   useEffect(() => {
-    const getRandomVideo = async () => {
-      const randomVideo = await fetchRandomVideo();
-      setVideo(randomVideo);
-    };
-
-    getRandomVideo();
-  }, []);
+    // const getRandomVideo = async () => {
+    //   const randomVideo = await fetchRandomVideo();
+    //   setVideo(randomVideo);
+    // };
+setVideo (props.video)
+    // getRandomVideo();
+  }, [props]);
 
   return (
     <div>
