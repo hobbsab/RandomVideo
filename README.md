@@ -1,8 +1,18 @@
-# React + Vite
+# Random Video Generator
+A random video generator using the YouTube API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Usage
+Type in a search term and generate a random YouTube video.
 
-Currently, two official plugins are available:
+## Resources / stack
+React/Vite
+Node.js
+Bootstrap
+Axios + YouTube API
+React Icons
+IndexedDB
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+![image](https://github.com/hobbsab/RandomVideo/assets/150401954/d45fa0e9-2df6-4c1d-9468-d45ab13299c2)
