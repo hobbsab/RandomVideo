@@ -13,8 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.maindiv {
-  display: block;
+.likebtn {
+  display: inline-block;
+  }
+.dislikebtn {
+display: inline-block;
+}
+.likenumber {
+  display: inline-block;
+}
+.dislikenumber {
+  display: inline-block;
+}
+
+
+
+* {
+margin: auto;
+text-align: center;
+justify-content: center;
 }
 
 .footerImg {
